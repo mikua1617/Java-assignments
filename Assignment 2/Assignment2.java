@@ -20,8 +20,9 @@ public class Assignment2{
 		System.out.println("Enter the string");
         	Scanner reading = new Scanner(System.in);
         	String line = reading.nextLine();
+		line = line.toLowerCase();
 
-		String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String letters = "abcdefghijklmnopqrstuvwxyz";
 
 		Map<String, Integer>  dictionary = new HashMap<>();
 		Checkalphabets line1 = new Checkalphabets();
@@ -36,11 +37,6 @@ public class Assignment2{
 			System.out.println("All characters of the alphabet are not present");
 		else
 			System.out.println("All characters of the alphabet are present");
-
-		
- 
-		
-
 
 
 	}
@@ -100,71 +96,20 @@ class Checkalphabets{
 	public Map<String, Integer> checkstring(String line, Map<String, Integer> dictionary){
 
 		for (int loopcounter=0; loopcounter<line.length(); loopcounter++){
-			if (Character.isLowerCase(line.charAt(loopcounter))){
-				dictionary = manipulateupper(line, dictionary, loopcounter);
+			if (Character.isLetter(line.charAt(loopcounter))){
+				dictionary.put(String.valueOf(line.charAt(loopcounter)), dictionary.get(String.valueOf(line.charAt(loopcounter))) - 1);
 			}
 				
-
-			else if (Character.isUpperCase(line.charAt(loopcounter))){
-				dictionary = manipulatelower(line, dictionary, loopcounter);
-			}
-
 			else 
 				continue;
 			
 		}
 			
-		
 
 		return dictionary;
 	}
 
 
-/**
- *Used to reduce the linked mapping for the appropriate key. When the letter found in the entered line is of the lowercase
- *this method is called and reduces the mapping for the letter found as well as the mapping for the uppercase of the letter
- *found. Thus ensures that case insensitivity is maintained and a is considered the same as A.
- *
- *@param line          The string entered by the user to check for occurence of alphabets
- *@param dictionary    mapping being manipulated according to the letter found
- *@param loopcounter   the loopcounter used in the method that calls this method so as to retain the position of the letter at 
- *                     which to reduce the mapping 
- *                     
- *
- *@return dictionary   Manipulated hashmap with lowercase letters and corresponding uppercase letter mappings reduced
-*/
-
-
-	private Map<String, Integer> manipulateupper(String line, Map<String, Integer> dictionary, int loopcounter){
-
-		dictionary.put(String.valueOf(line.charAt(loopcounter)).toUpperCase(), dictionary.get(String.valueOf(line.charAt(loopcounter)).toUpperCase()) - 1);
-        dictionary.put(String.valueOf(line.charAt(loopcounter)), dictionary.get(String.valueOf(line.charAt(loopcounter))) - 1);
-
-		return dictionary;
-	}
-
-
-/**
- *Used to reduce the linked mapping for the appropriate key. When the letter found in the entered line is of the uppercase
- *this method is called and reduces the mapping for the letter found as well as the mapping for the lowercase of the letter
- *found. Thus ensures that case insensitivity is maintained and a is considered the same as A.
- *
- *@param line          The string entered by the user to check for occurence of alphabets
- *@param dictionary    mapping being manipulated according to the letter found
- *@param loopcounter   the loopcounter used in the method that calls this method so as to retain the position of the letter at 
- *                     which to reduce the mapping 
- *                     
- *
- *@return dictionary   Manipulated hashmap with lowercase letters and corresponding uppercase letter mappings reduced
-*/
-
-	private Map<String, Integer> manipulatelower (String line, Map<String, Integer> dictionary, int loopcounter){
-
-		dictionary.put(String.valueOf(line.charAt(loopcounter)), dictionary.get(String.valueOf(line.charAt(loopcounter))) - 1);
-        dictionary.put(String.valueOf(line.charAt(loopcounter)).toLowerCase(), dictionary.get(String.valueOf(line.charAt(loopcounter)).toLowerCase()) - 1);
-
-		return dictionary;
-	}
 
 		
 /**

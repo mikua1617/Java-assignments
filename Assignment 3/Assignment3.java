@@ -23,6 +23,7 @@ public class Assignment3{
 
 		Pingprocess URL1 = new Pingprocess();
 
+
 		URL1.makecommandlist();
 		URL1.pinging();
 		URL1.regex();
@@ -60,12 +61,24 @@ public class Assignment3{
 
 class Pingprocess{
 
-	Assignment3 A1 = new Assignment3();
+	
 
-	private int number_of_pings = A1.getpings();
-	private String[] ping_results = new String[number_of_pings];
+ 	
+	private int number_of_pings;
+	private String[] ping_results;
 	private ArrayList<String> commandList = new ArrayList<>();
-	private float[] times = new float[number_of_pings];
+	private float[] times;
+
+
+	Pingprocess(){
+		Assignment3 A1 = new Assignment3();
+		number_of_pings = A1.getpings();
+		ping_results = new String[number_of_pings];
+		times = new float[number_of_pings];
+
+	}
+
+
 
 	
 
@@ -77,11 +90,13 @@ class Pingprocess{
 
 	public void makecommandlist(){
 
+
 		commandList.add("ping");
 
                 Scanner in = new Scanner(System.in);
                 System.out.println("Enter IP address or URL of host");
                 commandList.add(in.next());
+		
 
 	}
 

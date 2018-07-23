@@ -3,6 +3,23 @@ import java.io.*;
 import java.lang.Character;
 import java.text.SimpleDateFormat;  
 
+
+/**
+ *This program asks the user to enter a predetermined number of pairs of dates in the format
+ *dd-mm-yyyy dd-mm-yyyy and then finds the range of dates over which the user may backdate his/her KYC
+ *form. The KYC form needs to be filled every year by customers of Gruber Healthcare. According to government
+ *regulations, the KYC form may only be filled within 30 days before or after the sign up anniversary of the 
+ *customer. If the current date is beyond the range of stipulated dates for KYC filing, the customer must backdate 
+ *the KYC form to a date in the range of valid dates. The joining anniversary occurs every year consequent to 
+ *a customer signing up for Gruber healthcare. This program prints the allowable date range possible for a
+ *given pair of sign up and current dates. If the current date is within a year of the sign up date, there is 
+ *no valid date acceptable and hence the program prints an error message 
+ *
+ *@author    Shashwat Mishra
+*/
+
+
+
 public class Assignment4{
 	
 	public static void main(String[] args){
@@ -16,6 +33,18 @@ public class Assignment4{
 		
 	}
 
+
+
+/**
+ *Asks the user for the number of date pairs to be entered and then returns the same. Used in the constructor 
+ *of class KYCDates in order to initialize the size of Calendar arrays with the number of values to be entered
+ *by the user 
+
+ *@return  number_of_dates        The number of pairs of dates to be entered and checked for by the program
+*/
+
+
+
 	public int getinputnos(){
 		
 		System.out.println("Enter the number of dates to be entered");
@@ -26,7 +55,16 @@ public class Assignment4{
 	}
 }
 
-		
+/**
+ *Contains methods and variables needed to ask the user for input of the necessary dates, find the date range of KYC form 
+ *filling and then print out the range of dates accordingly if possible.
+ *
+ *@author Shashwat Mishra
+*/
+
+
+
+	
 class KYCDates{
 
 	private int number_of_dates;
@@ -48,6 +86,14 @@ class KYCDates{
 	}
 
 
+/**
+ *Asks the user to enter the enter the pairs of dates as required in the format dd-mm-yyyy dd-mm-yyyy and accepts 
+ *input into a string array. Returns the array of strings with each string storing one pair of dates as accepted 
+ *in input.
+ *
+ *@return dateinputs    array of strings that stored each entered pair of dates in a separate string with the date
+ *                      of joining and the current date respectively separated by a space 
+*/
 
 
 	public String[] getdates(){
@@ -66,6 +112,15 @@ class KYCDates{
 
 	}
 
+
+/**
+ *Converts the string input into object of Calendar type by reading through the string and extracting substrings
+ *for each of the days, months and years as necessary. upcasts the data in a GregorianCalendar format to an object
+ *of Calendar class. 
+ *
+ *@param dateinputs     Array of strings that contains dates in the dd-mm-yyyy dd-mm-yyyy format with the first date 
+ *                      bring the signing up date and the second date, separated by a space being the current date. 
+*/
 
 
 
@@ -87,12 +142,21 @@ class KYCDates{
 
 
 
+/**
+ *Computes the range of dates wherein the KYC form may be filled by a customer given the date of joining and the 
+ *current date. The range of dates is given by an upper limit and a lower limit. The upper limit varies according to
+ *whether the current date falls within the range of valid dates for KYC. Also makes sure that the lower limit is set according
+ *to whether the KYC range is even possible or not.
+*/
+
+
 
 	public void finddaterange(){
 
 		int current_year;
 
 		for(int i=0; i<number_of_dates; i++){
+			
 				
 			current_year = current_dates[i].get(Calendar.YEAR);
 			
@@ -109,6 +173,16 @@ class KYCDates{
 				begin_dates[i].add(Calendar.YEAR, (current_year - joining_dates[i].get(Calendar.YEAR))); 
 
 			}
+			
+			Date date1 = current_dates[i].getTime();
+			Date date2 = joining_dates[i].getTime();
+			
+
+			long difference =  (date1.getTime()-date2.getTime())/86400000;
+			
+			if(difference<335)
+				begin_dates[i]=null;
+		
 
 			joining_dates[i].add(Calendar.DAY_OF_YEAR, 31);
 			joining_dates[i].add(Calendar.YEAR, (current_year - joining_dates[i].get(Calendar.YEAR))); 
@@ -131,6 +205,11 @@ class KYCDates{
 	}
 
 
+/**
+ *Prints out the starting and the ending dates for the range of values of permissible KYC dates as found out in the 
+ *finddaterange method. Formats the dates in the required format (dd-mm-yyyy dd-mm-yyyy) using the java.text.SimpleDateFormat 
+ *class. Makes sure that the range of dates exists before printing out.
+*/
 
 
 

@@ -21,13 +21,17 @@ public class Assignment3{
 
 	public static void main(String[] args){
 
-		Pingprocess URL1 = new Pingprocess();
+
+		Assignment3 A1 = new Assignment3();
+		Pingprocess URL1 = new Pingprocess(A1.getpings());
 
 
 		URL1.makecommandlist();
 		URL1.pinging();
 		URL1.regex();
 		URL1.displaymedian();
+
+		
 
 	}
 
@@ -70,9 +74,9 @@ class Pingprocess{
 	private float[] times;
 
 
-	Pingprocess(){
-		Assignment3 A1 = new Assignment3();
-		number_of_pings = A1.getpings();
+	Pingprocess(int num){
+		
+		number_of_pings = num;
 		ping_results = new String[number_of_pings];
 		times = new float[number_of_pings];
 

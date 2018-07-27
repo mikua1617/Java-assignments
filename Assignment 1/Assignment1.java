@@ -30,11 +30,11 @@ public class Assignment1{
 		String choice="y";		
 		while(choice.equals("y")){
 
-			matching R1 = new matching();
+			Matching Regularex = new Matching();
 
-			R1.getregex();
-			R1.matchregex();
-			R1.getmatchedfiles();
+			Regularex.getregex();
+			Regularex.matchregex();
+			Regularex.getmatchedfiles();
 			
 			System.out.println("Do you want to enter more? (y/n)");
 			Scanner reader = new Scanner(System.in);
@@ -53,10 +53,10 @@ public class Assignment1{
  *@author Shashwat Mishra
 */
 
-class files{
+class Files{
 
-	String[] Filenames;
-	String Homedir;
+	private String[] Filenames;
+	private String Homedir;
 
 /**
  *Used to get the homedirectory of the user via the system method getProperty.
@@ -93,12 +93,12 @@ class files{
  *
  *@author Shashwat Mishra 
 */
-class matching extends files{
+class Matching {
 
-	String regex;
-	Pattern regexcheck;
-	String[] matchedfiles= new String[500];
-	int j=0;
+	private String regex;
+	private Pattern regexcheck;
+	private String[] matchedfiles= new String[500];
+	
 
 		
 /**
@@ -122,7 +122,11 @@ class matching extends files{
 */
 	public void matchregex(){
 		
-		Filenames = getFilenames();
+		Files file1 = new Files();
+		
+		String[] Filenames = file1.getFilenames();
+		int counter = 0;
+
 		
 		regexcheck = Pattern.compile(regex);
 		for (int i = 0; i < Filenames.length; i++){ 
@@ -130,8 +134,8 @@ class matching extends files{
             		Matcher matched = regexcheck.matcher(Filenames[i]);
 		
 			if(matched.find()==true){
-				matchedfiles[j]=Homedir+"/"+Filenames[i];
-				j++;
+				matchedfiles[counter]=(file1.getHomedir())+"/"+Filenames[i];
+				counter++;
 				
 				}				
 			}

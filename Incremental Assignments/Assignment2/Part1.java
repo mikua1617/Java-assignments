@@ -3,20 +3,21 @@ import java.util.*;
 import java.lang.Object;
 
 
-class Iassignment2{
+class Part1{
 
 
 
-	Iassignment2(){
+	Part1(){
 		
+		this(50);
 		System.out.println("Constructor without arguments");
-		this(50);	
+			
 	}
 
-	Iassignment2(int test){
+	Part1(int test){
 
 		System.out.println("Overloaded Constructor");
 	}
 
 }
-		
+			

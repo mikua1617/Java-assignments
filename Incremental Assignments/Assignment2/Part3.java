@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 
 
-public class StringConstructors{
+public class Part3{
 
 
 	public static void main(String args[]) {
 
-	part3[] objects = new part3[100];
-	objects[0] = new part3("abcd");	
+	part3[] objects = new part3[5];
+	
 
 
 	}

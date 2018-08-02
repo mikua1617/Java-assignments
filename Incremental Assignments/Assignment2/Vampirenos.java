@@ -9,6 +9,8 @@ public class Vampirenos{
 
 		int number = 1;
 		ArrayList<Integer> vampires = new ArrayList<Integer>();
+	
+		Vampirenos vampirenos = new Vampirenos();
 		
 		int digits, x=0, n=0;
 
@@ -17,7 +19,7 @@ public class Vampirenos{
 			number++;
 		
 		
-			digits = Vampirenos.digitcount(number);
+			digits = vampirenos.digitcount(number);
 		
 			
 
@@ -25,7 +27,7 @@ public class Vampirenos{
 
 				for(int i=2; i<=number; i++){
 
-					if(number%i==0 && Vampirenos.digitcount(number/i)==(Vampirenos.digitcount(number)/2) && Vampirenos.digitcount(i)==digits/2){
+					if(number%i==0 && vampirenos.digitcount(number/i)==(vampirenos.digitcount(number)/2) && vampirenos.digitcount(i)==digits/2){
 						if(i%10 == 0 && number/i%10 ==0){
 
 							continue;
@@ -39,15 +41,15 @@ public class Vampirenos{
 							
 							ArrayList<Integer> factordigits = new ArrayList<Integer>();
 		
-							factordigits.addAll(Vampirenos.getdigits(i));
-							factordigits.addAll(Vampirenos.getdigits(number/i));
+							factordigits.addAll(vampirenos.getdigits(i));
+							factordigits.addAll(vampirenos.getdigits(number/i));
 							
 
 							ArrayList<Integer> numberdigits = new ArrayList<Integer>();
 			
-							numberdigits = Vampirenos.getdigits(number);
+							numberdigits = vampirenos.getdigits(number);
 
-                                                        if(Vampirenos.comparedigits(factordigits, numberdigits)){
+                                                        if(vampirenos.comparedigits(factordigits, numberdigits)){
 								
 									
 
@@ -77,7 +79,7 @@ public class Vampirenos{
 	}
 
 
-	public static int digitcount(int num){
+	public int digitcount(int num){
 		
 		int count=0;		
 		
@@ -92,7 +94,7 @@ public class Vampirenos{
 
 	
 
-	public static ArrayList<Integer> getdigits(int num){
+	public ArrayList<Integer> getdigits(int num){
 
 		ArrayList<Integer> digits = new ArrayList<Integer>();
 
@@ -108,7 +110,7 @@ public class Vampirenos{
 	
 		
 
-	public static boolean comparedigits(ArrayList<Integer> factor, ArrayList<Integer> num){
+	public boolean comparedigits(ArrayList<Integer> factor, ArrayList<Integer> num){
 
 		Collections.sort(factor);
 		Collections.sort(num);

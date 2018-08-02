@@ -27,11 +27,11 @@ class First{
 }
 
 
-class Second{
+class Second extends First{
 
-	First temp1 = new First();
+	
 
-	class Secondinner extends temp1.Firstinner{
+	class Secondinner extends First.Firstinner{
 
 		void printer(){
 

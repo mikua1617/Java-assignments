@@ -3,7 +3,7 @@ package Shashwat.assignment.singleton;
 public class IAssignment1singleton{
 	
 	private String str1;
-	IAssignment1singleton obj1 = null;
+	private IAssignment1singleton obj1 = null;
 
 	public static IAssignment1singleton initialization(String str){
 

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class IAssignment4{
+public class Recruitment_test{
 
 	public static void main(String[] args){
 
@@ -8,7 +8,7 @@ public class IAssignment4{
 		System.out.println("Enter the age of army candidate");		
 		int age = reader.nextInt();
 		
-		Exceptiontest candidate = new Exceptiontest();
+		Recruitment candidate = new Recruitment();
 
 		try{
 
@@ -52,7 +52,7 @@ class NegativeAge extends Exception{
 	}
 }
 
-class Exceptiontest{
+class Recruitment{
 
 	public void handler(int age) throws TooYoung, TooOld, NegativeAge{
 

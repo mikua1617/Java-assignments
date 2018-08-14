@@ -27,15 +27,13 @@ class First{
 }
 
 
-class Second extends First{
+class Second{
 
-	
-
-	class Secondinner extends First.Firstinner{
+	class Secondinner extends F1.Firstinner{
 
 		void printer(){
 
-			System.out.println(var2);
+			//System.out.println(var2);
 		}
 	}
 }
